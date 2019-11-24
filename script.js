@@ -20,6 +20,7 @@ function displayResults(responseJson) {
     $('#results-list').append(
       `<li><h3>${responseJson.data[i].fullName}</h3>
       <p>${responseJson.data[i].description}</p>
+      <p>${responseJson.data[i].description.addresses}</p>
       <a href="${responseJson.data[i].url}">Website</a>
       </li>`
     )};
@@ -31,8 +32,8 @@ function displayResults(responseJson) {
 function seeSomeParks(query, limit=10) {
   const params = {
     api_key: apiKey,
-    q: query,
-    stateCode: $('#js-select-state').val(),
+    stateCode: query,
+    fields: query,
     limit,
   };
   const queryString = formatQueryParams(params)
